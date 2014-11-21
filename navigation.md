@@ -14,8 +14,7 @@
 
 [Technology](pages/technology/about.md)
 
-[Research](about.md)
-
+[Research]()
   * # Math
   * [HMM](pages/research/about.md)
   - - - -
