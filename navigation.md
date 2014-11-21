@@ -18,9 +18,7 @@
 
   * # Math
   * [HMM](pages/research/about.md)
-
   - - - -
-
   * # CPSS
   * [Semantic Web](pages/research/about.md)
 
