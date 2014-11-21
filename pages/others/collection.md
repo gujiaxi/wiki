@@ -18,6 +18,7 @@
 * [ZeroC](http://zeroc.com): The Internet Communications Engine (Ice) is a modern distributed computing platform.
 * [ZeroMQ](http://zeromq.org): A messaging library.
 * [RubyMine](https://www.jetbrains.com/ruby/): Ruby on Rails IDE
+* [Chocolatery](https://chocolatey.org): A machine package manager, somewhat like apt-get, but built with Windows in mind.
 
 ## Online Tools
 * [ProcessOn](http://processon.com): Create free diagrams online
