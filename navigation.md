@@ -30,11 +30,11 @@
 [Others]()
 
   * # Art
-  * [Andy Warhol](pages/research/about.md)
+  * [Andy Warhol](pages/others/andy-warhol.md)
   - - - -
   * # Life
-  * [Coffee](pages/personal/coffee.md)
+  * [Coffee](pages/others/coffee.md)
   - - - -
   * # Personal
-  * [Collection](pages/personal/collection.md)
-  * [Personal Stuff](pages/personal/personal.md)
+  * [Collection](pages/others/collection.md)
+  * [Stuff](pages/others/personal.md)
