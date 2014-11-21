@@ -37,7 +37,7 @@
   * [Andy](pages/research/about.md)
   - - - -
   * # Life
-  * [Coffee](pages/research/about.md)
+  * [Coffee](pages/personal/coffee.md)
   - - - -
   * # Collection
-  * [Tools](pages/personal/collection.md)
+  * [Collection](pages/personal/collection.md)
