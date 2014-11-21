@@ -34,7 +34,10 @@
 [Personal]()
 
   * # Art
-  * [HMM](pages/research/about.md)
+  * [Andy](pages/research/about.md)
   - - - -
   * # Life
-  * [Semantic Web](pages/research/about.md)
+  * [Coffee](pages/research/about.md)
+  - - - -
+  * # Collection
+  * [Tools](pages/personal/collection.md)
