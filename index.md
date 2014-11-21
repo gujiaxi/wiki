@@ -17,19 +17,19 @@ Wikis are very useful and can make you more productive. You can think of a perso
 
 There are all sorts of possibilities with personal wiki:
 
-* Empty your head—use your wiki to empty your head of thoughts and get them down so you don’t need to worry about them. Insomniac? Try this! This is also a core principle of GTD, so if you’re unhappy with your current method, this could work for you.
+* **Empty your head**: use your wiki to empty your head of thoughts and get them down so you don’t need to worry about them. Insomniac? Try this! This is also a core principle of GTD, so if you’re unhappy with your current method, this could work for you.
 
-* Note-taking—Evernote too much for you? Blasphemy! Just kidding—a personal wiki can be a great note-taking app, whether it’s for ideas throughout the day, meetings, or lectures.
+* **Note-taking**: Evernote too much for you? Blasphemy! Just kidding—a personal wiki can be a great note-taking app, whether it’s for ideas throughout the day, meetings, or lectures.
 
-* Personal Knowledgebase—keep forgetting how that fancy can-opener works? Write the method down in your wiki (no kidding, I once had a can-opener that I kept forgetting how to use). What about moving house? There are a million and one things that need doing then—least of which is the endless list of companies and organizations you need to inform that you’ve changed your address. Get that list completed in your wiki and you can check it off next time you move.
+* **Personal Knowledgebase**: keep forgetting how that fancy can-opener works? Write the method down in your wiki (no kidding, I once had a can-opener that I kept forgetting how to use). What about moving house? There are a million and one things that need doing then—least of which is the endless list of companies and organizations you need to inform that you’ve changed your address. Get that list completed in your wiki and you can check it off next time you move.
 
-* Writer’s Desk—I know a freelance writer who used a wiki as a word processor and client tracker in Internet cafes until she could afford a computer of her own. Unusual, but effective!
+* **Writer’s Desk**: I know a freelance writer who used a wiki as a word processor and client tracker in Internet cafes until she could afford a computer of her own. Unusual, but effective!
 
-* Client manager—as I mentioned, my friend didn’t just use the wiki as a word processor, but to keep notes on clients. Keep your client contact details, invoicing dates, project details and past work in a wiki for easy reference.
+* **Client manager**: as I mentioned, my friend didn’t just use the wiki as a word processor, but to keep notes on clients. Keep your client contact details, invoicing dates, project details and past work in a wiki for easy reference.
 
-* Joint projects—work on documents collaboratively with colleagues, or a freelancer you’ve teamed up with. It’s not the best collaborative word processor ever, but it’ll get the job done.
+* **Joint projects**: work on documents collaboratively with colleagues, or a freelancer you’ve teamed up with. It’s not the best collaborative word processor ever, but it’ll get the job done.
 
-* Project Management—got a big project from a client or your employer to plan out and execute? Perhaps you’re planning a wedding and need someplace to keep track of all the annoying details and headaches involved (I wish I’d thought of this for my own!). Wikis can be highly effective project managers.
+* **Project Management**: got a big project from a client or your employer to plan out and execute? Perhaps you’re planning a wedding and need someplace to keep track of all the annoying details and headaches involved (I wish I’d thought of this for my own!). Wikis can be highly effective project managers.
 
 ## How
 
