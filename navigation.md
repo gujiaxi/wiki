@@ -11,12 +11,17 @@
 [gimmick:theme](flatly)
 [gimmick: math]()
 
-[Algorithm](pages/art/about.md)
+[Algorithm]()
+
+  * [HMM](pages/algorithm/hmm.md)
 
 [Programming]()
 
   * # Haskell
   * [Haskell with Chris Allen](pages/programming/haskell.md)
+  - - - -
+  * # Git
+  * [A Practical git introduction](pages/programming/gitintro.md)
 
 [Research]()
 
