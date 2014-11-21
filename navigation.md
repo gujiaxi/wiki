@@ -10,18 +10,18 @@
 
 [Art](pages/art/about.md)
 
-[Life](pages/life/download.md)
+[Life](pages/life/about.md)
 
-[Technology](pages/technology/sdf.md)
+[Technology](pages/technology/about.md)
 
-[Research](abot.md)
+[Research](about.md)
 
   * # Math
-  * [HMM](pages/research/HMM.md)
+  * [HMM](pages/research/about.md)
 
   - - - -
 
   * # CPSS
-  * [Semantic Web](pages/research/semantic.md)
+  * [Semantic Web](pages/research/about.md)
 
-[Personal](pages/personal/personal.md)
+[Personal](pages/personal/about.md)
