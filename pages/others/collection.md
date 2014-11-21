@@ -1,14 +1,14 @@
 # Personal Collection
 
 ## Apps
-* [Press](https://play.google.com/store/apps/details?id=com.twentyfivesquares.press): Elegant RSS Reader for Android
-* [Reeder](http://reederapp.com/): Wonderful RSS Reader for iOS and Mac
-* [Alfred](http://www.alfredapp.com/): Productivity App for Mac OS X
-* [OmniFocus](https://www.omnigroup.com/omnifocus): an incredible task management platform for Mac, iPad, and iPhone.
-* [Slicereader](http://mthr.me/slicereader/): the most innovative reading app on the Mac yet.
+* [Press](https://play.google.com/store/apps/details?id=com.twentyfivesquares.press): An elegant RSS reader for Android
+* [Reeder](http://reederapp.com/): A wonderful RSS Reader for iOS and Mac
+* [Alfred](http://www.alfredapp.com/): A productivity App for Mac OS X
+* [OmniFocus](https://www.omnigroup.com/omnifocus): An incredible task management platform for Mac, iPad, and iPhone.
+* [Slicereader](http://mthr.me/slicereader/): The most innovative reading app on the Mac yet.
 
-## Websites:
-* [Facto!](http://facto.me): for sharing facts about yourself.
+## Websites
+* [Facto!](http://facto.me): For sharing facts about yourself.
 * [Ello](http://ello.co): Simple, beautiful & ad-free SNS.
 * [Medium](http://medium.com): Everyone’s stories and ideas
 
@@ -16,7 +16,7 @@
 * [spf13-vim](http://vim.spf13.com): The ultimate Vim Distribution
 * [Jekyll](http://jekyllrb.com): Static website generator with ruby
 * [ZeroC](http://zeroc.com): The Internet Communications Engine (Ice) is a modern distributed computing platform.
-* [ZeroMQ](http://zeromq.org): a messaging library.
+* [ZeroMQ](http://zeromq.org): A messaging library.
 * [RubyMine](https://www.jetbrains.com/ruby/): Ruby on Rails IDE
 
 ## Online Tools
