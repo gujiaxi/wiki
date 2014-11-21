@@ -19,8 +19,8 @@
 
 [Programming]()
 
-  * [Haskell with Chris Allen](pages/programming/haskell.md)
-  * [A Practical git introduction](pages/programming/gitintro.md)
+  * [Haskell](pages/programming/haskell.md)
+  * [Git](pages/programming/gitintro.md)
 
 [Research]()
 
@@ -30,7 +30,7 @@
 [Others]()
 
   * # Art
-  * [Andy](pages/research/about.md)
+  * [Andy Warhol](pages/research/about.md)
   - - - -
   * # Life
   * [Coffee](pages/personal/coffee.md)
