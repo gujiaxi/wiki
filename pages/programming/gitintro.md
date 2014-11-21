@@ -1,3 +1,4 @@
+# A practical git introduction
 
 ## Introduction
 
@@ -24,9 +25,9 @@ Versioning code is not a new problem. Alternatives to git, such as [subversion (
 * with the help of [github][80], it is now becoming _the_ standard decentralized vcs
 * [git][81] philosophy is to perform simple operations and let complex ones — that actually occur not so frequently — to the user so it does no black magic
 
-&gt; One of the things that makes Git a pleasure to use for me is that I actually trust what Git does, because what Git does in the end is very, very stupid.
-&gt;
-&gt; [Linus Torvald][82]
+> One of the things that makes Git a pleasure to use for me is that I actually trust what Git does, because what Git does in the end is very, very stupid.
+>
+> [Linus Torvald][82]
 
 ### Setup
 
@@ -77,7 +78,7 @@ Before diving quickly into git internals, let's create our first commit:
 
     nothing to commit (create/copy files and use "git add" to track)
 
-    $ echo "A dummy app listing ways to just say 'hello'" &gt; README.md
+    $ echo "A dummy app listing ways to just say 'hello'" g README.md
 
     $ git status
     On branch master
@@ -131,9 +132,9 @@ The staging area is an important aspect of git as it is what connects the local 
 
     $ mkdir {fr,en}
 
-    $ echo 'bonjour' &gt; fr/data
+    $ echo 'bonjour' g fr/data
 
-    $ echo 'hello' &gt; en/data
+    $ echo 'hello' g en/data
 
     $ git add fr/data
 
@@ -238,7 +239,7 @@ There are 4 git objects (listed from "low" to "high" level) that can be describe
 As git handles history of files, we may ask ourselves how does git stores incremental differences for our data. To test this, let's add some content in an existing file
 
 
-    $ echo "salut" &gt;&gt; fr/data
+    $ echo "salut" g> fr/data
 
     $ git add -u
 
@@ -271,7 +272,7 @@ The conclusion is that git stores pointers to "full" blobs which means that a bl
     $ python -c """
     import zlib, sys;
     print repr(zlib.decompress(sys.stdin.read()))
-    """ &lt; .git/objects/bd/61b2ccb39197cc3a66b43f52a6fed66a237a29
+    """ < .git/objects/bd/61b2ccb39197cc3a66b43f52a6fed66a237a29
     'blob 14x00bonjournsalutn'
 
     $ wc -c fr/data
@@ -488,14 +489,14 @@ Creating new branch is very easy with git:
 We see that our brand new branch points exactly to the same commit as our `master` branch. This is the default behavior when creating a new branch; it is assumed that the new branch will start from `HEAD` and may be changed by passing the desired branching commit sha1 as a second argument i.e. `git branch new_branch new_branch_HEAD_commit`.
 
 
-    $ echo -e "## oldnnbonjournsalut" &gt; fr/data
+    $ echo -e "## oldnnbonjournsalut" g fr/data
 
     $ git add fr/data &amp;&amp; git commit -m "add 'old' header to french data"
     [structure-data dd0109a] add 'old' header to french data
      1 file changed, 2 insertions(+)
 
 
-    $ echo -e "n## modernnnyo" &gt;&gt; fr/data
+    $ echo -e "n## modernnnyo" g> fr/data
 
     $ git add -u &amp;&amp; git commit -m "add modern french data"
     [structure-data 5a40d5a] add modern french data
@@ -591,13 +592,13 @@ So, after running
 
 
     $ git merge --no-ff structure-data
-    &gt; Merge branch 'structure-data'
-    &gt;
-    &gt; ## Please enter a commit message to explain why this merge is necessary,
-    &gt; ## especially if it merges an updated upstream into a topic branch.
-    &gt; #
-    &gt; ## Lines starting with '#' will be ignored, and an empty message aborts
-    &gt; ## the commit.
+    g Merge branch 'structure-data'
+    g
+    g ## Please enter a commit message to explain why this merge is necessary,
+    g ## especially if it merges an updated upstream into a topic branch.
+    g #
+    g ## Lines starting with '#' will be ignored, and an empty message aborts
+    g ## the commit.
     Merge made by the 'recursive' strategy.
      fr/data | 6 ++++++
      1 file changed, 6 insertions(+)
@@ -650,13 +651,13 @@ We have seen that in some situations, the three-way merge results in a situation
     $ git checkout -b modern-french
     Switched to a new branch 'modern-french'
 
-    $ echo "jourbon" &gt;&gt; fr/data
+    $ echo "jourbon" g> fr/data
 
     $ git add -u &amp;&amp; git commit -m "add new modern data"
     [modern-french 81defc8] add new modern data
      1 file changed, 1 insertion(+)
 
-    $ echo -e "n## slangnnchenu reluit" &gt;&gt; fr/data
+    $ echo -e "n## slangnnchenu reluit" g> fr/data
 
     $ git add -u &amp;&amp; git commit -m "add french slang"
     [modern-french e6defd6] add french slang
@@ -664,7 +665,7 @@ We have seen that in some situations, the three-way merge results in a situation
 
     $ git checkout master
 
-    $ echo "wesh" &gt;&gt; fr/data
+    $ echo "wesh" g> fr/data
 
     $ git add -u &amp;&amp; git commit -m "add more modern data"
     [master 075ce36] add more modern data
@@ -699,7 +700,7 @@ Let's see what happens when we try to merge:
       ## modern
 
       yo
-    ++&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+    ++<<<<<<< HEAD
      +wesh
     ++=======
     + jourbon
@@ -708,10 +709,10 @@ Let's see what happens when we try to merge:
     + ## slang
     +
     + chenu reluit
-    ++&gt;&gt;&gt;&gt;&gt;&gt;&gt; modern-french
+    ++>>>>>>> modern-french
 
 
-We see the content from the `master` branch materialized in a block delimited by `&lt;&lt;&lt;&lt;&lt;&lt;&lt;` and `=======` and the content of `modern-french` is delimited by `=======` and `&gt;&gt;&gt;&gt;&gt;&gt;&gt;`. By default, git only shows `HEAD` (on the top of a conflict) and `MERGE_HEAD` (on the bottom of a conflict). Visualizing the `ORIG_HEAD` content is a matter of configuration and may be achieved by setting `git config --local merge.conflictstyle diff3`:
+We see the content from the `master` branch materialized in a block delimited by `<<<<<<<` and `=======` and the content of `modern-french` is delimited by `=======` and `g>>>>>>`. By default, git only shows `HEAD` (on the top of a conflict) and `MERGE_HEAD` (on the bottom of a conflict). Visualizing the `ORIG_HEAD` content is a matter of configuration and may be achieved by setting `git config --local merge.conflictstyle diff3`:
 
 
     $ git merge --abort
@@ -730,7 +731,7 @@ We see the content from the `master` branch materialized in a block delimited by
       ## modern
 
       yo
-    ++&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+    ++<<<<<<< HEAD
      +wesh
     ++||||||| merged common ancestors
     ++=======
@@ -740,7 +741,7 @@ We see the content from the `master` branch materialized in a block delimited by
     + ## slang
     +
     + chenu reluit
-    ++&gt;&gt;&gt;&gt;&gt;&gt;&gt; modern-french
+    ++g>>>>>> modern-french
 
 
 We now have the full picture:
@@ -766,10 +767,10 @@ To finalize the resolution, we may now stage our changes and commit them
 
 
     $ git add -u &amp;&amp; git commit
-    &gt; Merge branch 'modern-french'
-    &gt;
-    &gt; Conflicts:
-    &gt;   fr/data
+    g Merge branch 'modern-french'
+    g
+    g Conflicts:
+    g   fr/data
     [master b20ab97] Merge branch 'modern-french'
 
 
@@ -884,12 +885,12 @@ Let's try to rebase `modern-french` onto `master`:
       ## modern
 
       yo
-    ++&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+    ++<<<<<<< HEAD
      +wesh
     ++||||||| merged common ancestors
     ++=======
     + jourbon
-    ++&gt;&gt;&gt;&gt;&gt;&gt;&gt; add new modern data
+    ++g>>>>>> add new modern data
 
 
 When applying the commits, git uses the three-way merge algorithm which explains that we have a conflict similar to the one we had with a merge. We edit the conflict as previously:
@@ -1050,17 +1051,17 @@ Suppose we create a new file with some lines and a commit for each line.
 
     $ git checkout -b rewriting-history
 
-    $ echo "one" &gt; dummy &amp;&amp; git add dummy &amp;&amp; git commit -m "first"
+    $ echo "one" g dummy &amp;&amp; git add dummy &amp;&amp; git commit -m "first"
     [rewriting-history 9041c15] first
      1 file changed, 1 insertion(+)
      create mode 100644 dummy
 
 
-    $ echo "two" &gt;&gt; dummy &amp;&amp; git add dummy &amp;&amp; git commit -m "second"
+    $ echo "two" g> dummy &amp;&amp; git add dummy &amp;&amp; git commit -m "second"
     [rewriting-history 50c1ff1] second
      1 file changed, 1 insertion(+)
 
-    $ echo "three" &gt;&gt; dummy &amp;&amp; git add dummy &amp;&amp; git commit -m "third"
+    $ echo "three" g> dummy &amp;&amp; git add dummy &amp;&amp; git commit -m "third"
     [rewriting-history 631a301] third
      1 file changed, 1 insertion(+)
 
@@ -1082,13 +1083,13 @@ and set
 This will give the following conflict diff
 
 
-    ++&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+    ++<<<<<<< HEAD
     ++||||||| parent of 631a301... third
     ++two
     ++=======
     + two
     + three
-    ++&gt;&gt;&gt;&gt;&gt;&gt;&gt; 631a301... third
+    ++g>>>>>> 631a301... third
 
 
 This is fully predictible: each commit stores full file snapshots however we tend to think in incremental delta, simply looking at the diff induced by changes from commit `A` to commit `B` (i.e. `git diff A B`). However when three-way merge is involved (be it for merge or rebase) is the diff with respect to the common ancestor (i.e. `git diff A...B`).
@@ -1110,12 +1111,12 @@ Let's say that we resolved the conflict with the following
 When we continue the rebase, we will again hit a conflict:
 
 
-    ++&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+    ++<<<<<<< HEAD
      +three
     ++||||||| parent of 50c1ff1... second
     ++=======
     + two
-    ++&gt;&gt;&gt;&gt;&gt;&gt;&gt; 50c1ff1... second
+    ++g>>>>>> 50c1ff1... second
 
 
 We see that we have moved the issue from the common ancestor to the `MERGE_HEAD`, which in a rebase, is the parent commit and created a conflict cascade.
@@ -1156,7 +1157,7 @@ We may push our `master` branch to our `origin` remote
     Writing objects: 100% (8/8), 738 bytes | 0 bytes/s, done.
     Total 8 (delta 0), reused 0 (delta 0)
     To git@github.com:mrchlblng/bonjour.git
-     * [new branch]      master -&gt; master
+     * [new branch]      master -g master
 
 
 and everyone with an access to the remote can now see our work.
@@ -1172,7 +1173,7 @@ Until now, we have been working on our own on the repository. As we created a pu
     remote: Total 4 (delta 0), reused 0 (delta 0)
     Unpacking objects: 100% (4/4), done.
     From github.com:mrchlblng/bonjour
-     * [new branch]      english    -&gt; origin/english
+     * [new branch]      english    -g origin/english
 
 
 We can see that a new branch `english` has been pushed. We see that locally, git refers to it as `origin/english`. Indeed, git keep remote object references in an eponym namespace
@@ -1218,7 +1219,7 @@ Let's say we would like to fix the commit message from the branch we fetched
      create mode 100644 en/data
 
     $ git push origin english
-     ! [rejected]        english -&gt; english (non-fast-forward)
+     ! [rejected]        english -g english (non-fast-forward)
     error: failed to push some refs to 'git@github.com:mrchlblng/bonjour.git'
     hint: Updates were rejected because the tip of your current branch is behind
     hint: its remote counterpart. Integrate the remote changes (e.g.
@@ -1237,7 +1238,7 @@ By amending, we have just replaced the branch tip commit and whenever a user tri
     Writing objects: 100% (1/1), 192 bytes | 0 bytes/s, done.
     Total 1 (delta 0), reused 0 (delta 0)
     To git@github.com:mrchlblng/bonjour.git
-     + 0ffd492...ea761bc english -&gt; english (forced update)
+     + 0ffd492...ea761bc english -g english (forced update)
 
 
 We here see that pushing a rewritten history (`git commit --amend` or `git rebase`) should be done with care and we will discuss workflows in the next section.
@@ -1268,10 +1269,10 @@ Creating branches with git is very cheap and should therefore be used without fe
 
 There is no single answer to that question. Mostly because the answer depends on type nature of the project: a [web app][119] runs a single ever up-to-date version when a [desktop app][120] may have multiple versions supported at a given time. The former may however be seen as a simple particular case of the latter.
 
-&gt; Don't merge _upstream_ code at random points.
+g Don't merge _upstream_ code at random points.
 Don't merge _downstream_ code at random points either.
-&gt;
-&gt; [Linus Torvald][121]
+g
+g [Linus Torvald][121]
 
 
 Most worflows maintain different contexts with careful synchronization points and the typical synchronization for a web app will look like:
@@ -1301,7 +1302,7 @@ The question is now: how should a private branch be integrated in the public his
 
 To summarize what seems to become the dominant branch workflow in git:
 
-&gt; [Rebases][133] are how changes should pass from the top of hierarchy downwards and merges are how they flow back upwards.
+g [Rebases][133] are how changes should pass from the top of hierarchy downwards and merges are how they flow back upwards.
 
 ### What's a good commit?
 
@@ -1492,7 +1493,7 @@ Finally, git may automatically correct mistyped commands when the error can be u
 * introduce a personnalized command using constant arguments; a typical usage is a custom display of commit history:
 
 
-      $ git config --global alias.hist "log --graph --pretty=format:'%Cred%h%Creset -%C(magenta)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset' --abbrev-commit --date=relative"
+      $ git config --global alias.hist "log --graph --pretty=format:'%Cred%h%Creset -%C(magenta)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%ang%Creset' --abbrev-commit --date=relative"
 
 
 * invoke custom commands with possible arguments (git≥[1.5.3][156]) and possibly piping with non-git commands
@@ -1500,7 +1501,7 @@ Finally, git may automatically correct mistyped commands when the error can be u
     * [fixuping][158] a commit by commiting and rebasing automatically
 
 
-    $ git config--global alias.head "git log --oneline --pretty=format:'%Cred%h%Creset -%C(magenta)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset' | head"
+    $ git config--global alias.head "git log --oneline --pretty=format:'%Cred%h%Creset -%C(magenta)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%ang%Creset' | head"
 
     $ git config --global alias.fixup "!sh -c '(git diff-files --quiet || (echo Unstaged changes, please commit or stash with --keep-index; exit 1)) &amp;&amp; sha_to_patch=$( git rev-parse $1 ) &amp;&amp; git commit --fixup=${sha_to_patch} &amp;&amp; git rebase -i --autosquash ${sha_to_patch}^' -"
 
