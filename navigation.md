@@ -11,18 +11,24 @@
 [gimmick:theme](flatly)
 [gimmick: math]()
 
-[Art](pages/art/about.md)
+[Algorithm](pages/art/about.md)
 
-[Life](pages/life/about.md)
-
-[Technology](pages/technology/about.md)
+[Programming]()
+  * # Haskell
+  * [Haskell with Chris Allen](pages/programming/haskell.md)
 
 [Research]()
 
-  * # Math
+  * # Tra
   * [HMM](pages/research/about.md)
   - - - -
-  * # CPSS
+  * # Life
   * [Semantic Web](pages/research/about.md)
 
-[Personal](pages/personal/personal.md)
+[Personal]()
+
+  * # Art
+  * [HMM](pages/research/about.md)
+  - - - -
+  * # Life
+  * [Semantic Web](pages/research/about.md)

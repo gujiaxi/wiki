@@ -1,13 +1,13 @@
 # Personal Stuff
 
 ## Books I read
-[Books](http://book.douban.com/people/gujiaxi/collect)
+[Douban Books](http://book.douban.com/people/gujiaxi/collect)
 
 ## Music I listen
-[Music](http://music.douban.com/people/gujiaxi/collect)
+[Douban Music](http://music.douban.com/people/gujiaxi/collect)
 
 ## Movies I enjoy
-[Movies](http://movie.douban.com/people/gujiaxi/collect)
+[Douban Movie](http://movie.douban.com/people/gujiaxi/collect)
 
 ## Persons I adore
 * [村上春樹](http://ja.wikipedia.org/wiki/村上春樹)
