@@ -14,6 +14,7 @@
 [Algorithm](pages/art/about.md)
 
 [Programming]()
+
   * # Haskell
   * [Haskell with Chris Allen](pages/programming/haskell.md)
 
