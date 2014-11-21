@@ -14,24 +14,20 @@
 [Algorithm]()
 
   * [HMM](pages/algorithm/hmm.md)
+  * [Naive Bayes](pages/algorithm/naive-bayes.md)
+  * [Apriori](pages/algorithm/apriori.md)
 
 [Programming]()
 
-  * # Haskell
   * [Haskell with Chris Allen](pages/programming/haskell.md)
-  - - - -
-  * # Git
   * [A Practical git introduction](pages/programming/gitintro.md)
 
 [Research]()
 
-  * # Tra
-  * [HMM](pages/research/about.md)
-  - - - -
-  * # Life
-  * [Semantic Web](pages/research/about.md)
+  * [Mlticast Transport Protocol](pages/research/videotrans.md)
+  * [Traffic Lane Improvement](pages/research/trafficlane.md)
 
-[Personal]()
+[Others]()
 
   * # Art
   * [Andy](pages/research/about.md)
@@ -39,5 +35,6 @@
   * # Life
   * [Coffee](pages/personal/coffee.md)
   - - - -
-  * # Collection
+  * # Personal
   * [Collection](pages/personal/collection.md)
+  * [Personal Stuff](pages/personal/personal.md)
