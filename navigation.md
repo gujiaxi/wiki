@@ -25,4 +25,4 @@
   * # CPSS
   * [Semantic Web](pages/research/about.md)
 
-[Personal](pages/personal/about.md)
+[Personal](pages/personal/personal.md)
