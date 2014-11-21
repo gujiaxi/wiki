@@ -39,4 +39,4 @@ However, if you're a beginner or anti-geek, [Scribbleton](http://scribbleton.com
 
 ## Contact
 
-Your can  [gimmick:TwitterFollow](@isaac_koo)  me on Twitter.
+[gimmick:TwitterFollow](@isaac_koo)
