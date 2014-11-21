@@ -1,15 +1,15 @@
 
-# Introduction
+## Introduction
 
 In just a few years, [git][1] has become the dominant version control system in the software industry. Despite its widespread use, it often still appears as either magical or cumbersome when its core concepts are not fully grasped. This post is a walkthrough of practical git usage that will detail how git internally handles things.
 
-## Why a version control system?
+### Why a version control system?
 
 People not already using a [version control system][73] (vcs) often perform some manual operations to keep incremental revisions of some work. Keeping iterative versions of a document or a collection of documents may be done through naming schemes like [`[filename]_v{0-9}+.doc`][74] or [`timestamp]_[filename]_[comment].zip` (where e.g. using the [ISO 8601][75] format for dates will sort version). However it becomes quickly cumbersome to easily see compare versions, to undo some modification or to work in parallel on the same document and not mentionning the possibility of making a mistake when freezing a version.
 
 This is where a vcs becomes handy if not mandatory to use. A [vcs][76] will store version of a collection of documents without modifying their apparent filenames, allow to undo/redo some modification and keep a context in which modification were performed (e.g. an author, timestamp, comment for the modification).
 
-## Why git?
+### Why git?
 
 Versioning code is not a new problem. Alternatives to git, such as [subversion (svn)][77], [concurrent versions system (cvs)][78], [perforce][79] are "old" vcs softwares. Wether git is better than those softwares or not will not be discussed here. However let's list some of the attractive features provided by git:
 
@@ -28,7 +28,7 @@ Versioning code is not a new problem. Alternatives to git, such as [subversion (
 &gt;
 &gt; [Linus Torvald][82]
 
-## Setup
+### Setup
 
 Before running git commands, we need:
 
@@ -63,9 +63,9 @@ Let's create a dummy repository
 
 git just created a hidden repository to contain internal data that we'll describe later and that's it, we've got a git repository!
 
-# git basics
+## git basics
 
-## First commit!
+### First commit!
 
 Before diving quickly into git internals, let's create our first commit:
 
@@ -113,7 +113,7 @@ Before diving quickly into git internals, let's create our first commit:
 
 Note that at each step, the `git status` command provides helpful overview of the current repository state and a _contextual_ help.
 
-## Staging area
+### Staging area
 
 git uses a two-phase commit:
 
@@ -168,9 +168,9 @@ This example is really simple; a more realistic workflow would be:
 
 Now that we have two commits, we may look at how git handles our data internally to better understand git mechanics.
 
-## Data store
+### Data store
 
-### Objects
+#### Objects
 
 After creating a commit, `git` displays a unique id for the newly created commit. We may use some git commands to inspect this [data][84]
 
@@ -233,7 +233,7 @@ There are 4 git objects (listed from "low" to "high" level) that can be describe
 * commit: project snapshot with contextual metadata
 * [tag][90]: frozen commit name (we will not cover tags and refer to the [documentation][91] for more details)
 
-### Physical storage
+#### Physical storage
 
 As git handles history of files, we may ask ourselves how does git stores incremental differences for our data. To test this, let's add some content in an existing file
 
@@ -314,7 +314,7 @@ git shards objects into 16×16=256 subfolders to grant a [faster access][97] to 
 
 We will not dig the [packfile][98] [format][99] which is an optimization to avoid cluttering the disk by regrouping objects together (typically by invoking `git gc`).
 
-## Immutability
+### Immutability
 
 When creating our last commit, we made an horrible typo. git allows to amend the last commit using `git commit --amend`. If the staging area contains any modification, they will be added to the commit. In our case, we just want to fix our typo so we do not add anything to the staging area:
 
@@ -327,15 +327,15 @@ opens our favorite editor (as defined by the `$EDITOR` environment variable) whe
 
     Add more french data
 
-    # Please enter the commit message for your changes. Lines starting
-    # with '#' will be ignored, and an empty message aborts the commit.
+    ## Please enter the commit message for your changes. Lines starting
+    ## with '#' will be ignored, and an empty message aborts the commit.
     #
-    # Date:      Sun Oct 12 16:19:08 2014 +0200
+    ## Date:      Sun Oct 12 16:19:08 2014 +0200
     #
-    # On branch master
+    ## On branch master
     #
-    # Changes to be committed:
-    # modified:   fr/data
+    ## Changes to be committed:
+    ## modified:   fr/data
     #
 
 
@@ -361,7 +361,7 @@ We see that git creates a _new_ commit object `dd0f5d6` (remember that the sha1 
 
 This means that a commit is [immutable][100]; any modification creates a new commit instead of modifying the existing one thus making git a [functional][101] DAG. We will later see that this is an important property to have in mind when multiple people are working on the same repository. The benefit is that every object is uniquely defined and when you manipulate a sha1 you do not have to worry about not having the correct content.
 
-## Reflog
+### Reflog
 
 If we look at our commit tree
 
@@ -388,7 +388,7 @@ Any action that has been **committed** can be retrieved later, even if it is no 
 
 Note however that git has [garbage][102] [collection][103] commands that will remove unreachable objects. By default those commands will not remove objects that were created in the last 2 weeks.
 
-## git basics: tl;dr
+### git basics: tl;dr
 
 * git is a functional DAG where nodes represents filetrees with metadata and keep a link to their parents
 * staging area is the bridge between local file tree and git data store
@@ -398,9 +398,9 @@ Note however that git has [garbage][102] [collection][103] commands that will re
 * `git reflog` records a reference to all created commits even when no longer reachable
 * don't mess with the `.git` folder!
 
-# Branches and remotes
+## Branches and remotes
 
-## Branches
+### Branches
 
 As we have seen in the previous section, git is a graph and you may have noticed that `git status` names branches:
 
@@ -488,25 +488,25 @@ Creating new branch is very easy with git:
 We see that our brand new branch points exactly to the same commit as our `master` branch. This is the default behavior when creating a new branch; it is assumed that the new branch will start from `HEAD` and may be changed by passing the desired branching commit sha1 as a second argument i.e. `git branch new_branch new_branch_HEAD_commit`.
 
 
-    $ echo -e "# oldnnbonjournsalut" &gt; fr/data
+    $ echo -e "## oldnnbonjournsalut" &gt; fr/data
 
     $ git add fr/data &amp;&amp; git commit -m "add 'old' header to french data"
     [structure-data dd0109a] add 'old' header to french data
      1 file changed, 2 insertions(+)
 
 
-    $ echo -e "n# modernnnyo" &gt;&gt; fr/data
+    $ echo -e "n## modernnnyo" &gt;&gt; fr/data
 
     $ git add -u &amp;&amp; git commit -m "add modern french data"
     [structure-data 5a40d5a] add modern french data
      1 file changed, 4 insertions(+)
 
 
-## Comparing
+### Comparing
 
 Now that we have two distinct branches, we should make sure that the changes introduced by our new branch match the intended specification. We therefore need to see the differences in content and commits.
 
-### Referencing parent commits
+#### Referencing parent commits
 
 * `abc123^` parent commit of commit `abc123`
 * `abc123^^` grandparent commit of commit `abc123`
@@ -514,18 +514,18 @@ Now that we have two distinct branches, we should make sure that the changes int
     * `abc123~1` ⇔ `abc123^`
     * `abc123~2` ⇔ `abc123^^`
 
-### Comparing content
+#### Comparing content
 
 * `git diff --cached`: changes that have been staged
 * `git diff A B`: changes (computed using the [longest common subsequence algorithm][106] algorithm)
 * `git diff A...B`: changes from common ancester of `A` and `B` to `B`
 
-### Comparing commits
+#### Comparing commits
 
 * `git branch --contains sha1`: list all branches containing the commit `sha1`
 * `git log A --not B`: list commits contained in branch `A` that are not in branch `B`
 
-### Comparing branches
+#### Comparing branches
 
 * `git branch --merged`: list branches that are reachable in the current branch history
 * `git branch --no-merged`: list branches that are not reachable in current branch history
@@ -539,12 +539,12 @@ If we compare our branch content with the `master` branch:
     --- a/fr/data
     +++ b/fr/data
     @@ -1,2 +1,8 @@
-    +# old
+    +## old
     +
      bonjour
      salut
     +
-    +# modern
+    +## modern
     +
     +yo
 
@@ -558,11 +558,11 @@ If we compare our branch content with the `master` branch:
 
 we see that we have been structuring our data and adding new content in two commits that are ready to be merged.
 
-## Merging
+### Merging
 
 As we are happy with the changes introduced in our new branch, we may now make our work available in the repository trunk. There are multiple strategies to perform this, the most basic one being a merge commit. In its simplest — yet most common — form, a merge will take 2 branches and create a commit having the branches respective HEADs for parents through a merge.
 
-### Three-way merge
+#### Three-way merge
 
 [Three-way merge][107] is a central algorithm in git. As its name suggests, it involves 3 distinct commits:
 
@@ -593,22 +593,22 @@ So, after running
     $ git merge --no-ff structure-data
     &gt; Merge branch 'structure-data'
     &gt;
-    &gt; # Please enter a commit message to explain why this merge is necessary,
-    &gt; # especially if it merges an updated upstream into a topic branch.
+    &gt; ## Please enter a commit message to explain why this merge is necessary,
+    &gt; ## especially if it merges an updated upstream into a topic branch.
     &gt; #
-    &gt; # Lines starting with '#' will be ignored, and an empty message aborts
-    &gt; # the commit.
+    &gt; ## Lines starting with '#' will be ignored, and an empty message aborts
+    &gt; ## the commit.
     Merge made by the 'recursive' strategy.
      fr/data | 6 ++++++
      1 file changed, 6 insertions(+)
 
     $ cat fr/data
-    # old
+    ## old
 
     bonjour
     salut
 
-    # modern
+    ## modern
 
     yo
 
@@ -627,7 +627,7 @@ the commit tree now looks like
     * 45de2f7 First commit
 
 
-### Fast forward
+#### Fast forward
 
 When merging, we explicitely asked git to create a merge commit using the `\--no-ff` flag. However, looking at the commit graph, we see that it is (almost) equivalent to the simplified one
 
@@ -642,7 +642,7 @@ When merging, we explicitely asked git to create a merge commit using the `\--no
 
 Indeed, in this case, `HEAD` and `ORIG_HEAD` pointed to the same commits hence `HEAD` may just be updated to `MERGE_HEAD`. Wether one should prevent fast-forward merges or not is a matter of workflow and we will discuss this point a bit later.
 
-### Resolving conflicts
+#### Resolving conflicts
 
 We have seen that in some situations, the three-way merge results in a situation where the merge content may not be automatically deduced. This is called a merge conflict. Let's create a conflict:
 
@@ -656,7 +656,7 @@ We have seen that in some situations, the three-way merge results in a situation
     [modern-french 81defc8] add new modern data
      1 file changed, 1 insertion(+)
 
-    $ echo -e "n# slangnnchenu reluit" &gt;&gt; fr/data
+    $ echo -e "n## slangnnchenu reluit" &gt;&gt; fr/data
 
     $ git add -u &amp;&amp; git commit -m "add french slang"
     [modern-french e6defd6] add french slang
@@ -696,7 +696,7 @@ Let's see what happens when we try to merge:
     --- a/fr/data
     +++ b/fr/data
     @@@ -6,4 -6,9 +6,13 @@@ salu
-      # modern
+      ## modern
 
       yo
     ++&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
@@ -705,7 +705,7 @@ Let's see what happens when we try to merge:
     + jourbon
     +
     +
-    + # slang
+    + ## slang
     +
     + chenu reluit
     ++&gt;&gt;&gt;&gt;&gt;&gt;&gt; modern-french
@@ -727,7 +727,7 @@ We see the content from the `master` branch materialized in a block delimited by
     --- a/fr/data
     +++ b/fr/data
     @@@ -6,4 -6,9 +6,14 @@@ salu
-      # modern
+      ## modern
 
       yo
     ++&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
@@ -737,7 +737,7 @@ We see the content from the `master` branch materialized in a block delimited by
     + jourbon
     +
     +
-    + # slang
+    + ## slang
     +
     + chenu reluit
     ++&gt;&gt;&gt;&gt;&gt;&gt;&gt; modern-french
@@ -757,7 +757,7 @@ This conflicts is easy to [solve][109] by editing the file and keeping both chan
     + jourbon
     +
     +
-    + # slang
+    + ## slang
     +
     + chenu reluit
 
@@ -798,7 +798,7 @@ It is important to note that when not sure about the resolution of a conflict:
 * reflog keeps previous states so it will always be possible to undo things
 * the conflict resolution can be aborted using `git merge --abort`.
 
-## Rebasing
+### Rebasing
 
 Once again, it feels like the graph
 
@@ -881,7 +881,7 @@ Let's try to rebase `modern-french` onto `master`:
     --- a/fr/data
     +++ b/fr/data
     @@@ -6,4 -6,4 +6,9 @@@ salu
-      # modern
+      ## modern
 
       yo
     ++&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
@@ -901,7 +901,7 @@ When applying the commits, git uses the three-way merge algorithm which explains
     --- a/fr/data
     +++ b/fr/data
     @@@ -6,4 -6,4 +6,5 @@@ salu
-      # modern
+      ## modern
 
       yo
      +wesh
@@ -941,7 +941,7 @@ As for the `merge` command
 * at any conflict resolution, `git rebase --abort` would stop the rebase process and put the branch back at its original state (all rebase information is stored in the `.git/rebase-merge/` folder)
 * also, if a commit no longer makes sense due to changes in the upstream branch, `git rebase --skip` will skip the now obsolete commit.
 
-### Rewriting history
+#### Rewriting history
 
 By rebasing our branch, we have avoided a merge commit. However, we now have two successive commits that seem to bring similar changes
 
@@ -971,15 +971,15 @@ will present all child commits that may be rewritten:
     pick 7a48ea2 add new modern data
     pick b588260 add french slang
 
-    # Rebase 62cbf27..b588260 onto 62cbf27
+    ## Rebase 62cbf27..b588260 onto 62cbf27
     #
-    # Commands:
-    #  p, pick = use commit
-    #  r, reword = use commit, but edit the commit message
-    #  e, edit = use commit, but stop for amending
-    #  s, squash = use commit, but meld into previous commit
-    #  f, fixup = like "squash", but discard this commit's log message
-    #  x, exec = run command (the rest of the line) using bash
+    ## Commands:
+    ##  p, pick = use commit
+    ##  r, reword = use commit, but edit the commit message
+    ##  e, edit = use commit, but stop for amending
+    ##  s, squash = use commit, but meld into previous commit
+    ##  f, fixup = like "squash", but discard this commit's log message
+    ##  x, exec = run command (the rest of the line) using bash
 
 
 We may notice that commits order is reversed compared to the output of `git log` command and older commits are first in the list.
@@ -1041,7 +1041,7 @@ or
     $ git branch --move modern-french master
 
 
-## Rebase caveats
+### Rebase caveats
 
 Rewriting history can lead to predictible yet unexpected results.
 
@@ -1120,7 +1120,7 @@ When we continue the rebase, we will again hit a conflict:
 
 We see that we have moved the issue from the common ancestor to the `MERGE_HEAD`, which in a rebase, is the parent commit and created a conflict cascade.
 
-## Remotes
+### Remotes
 
 Until now, we have been working locally. As the repository is now clean, we are now ready to publish our work to the world. git servers can be interacted with through the [`git remote`][112] command. By default no remote server is defined. We will use a repository declared on [GitHub][113] as our remote called `origin`:
 
@@ -1138,7 +1138,7 @@ We see two new verbs, "Fetch" to retrieve modification _from_ the remote reposit
 
 As we did not interact (to fetch or push) with the `origin` remote yet, the `HEAD` branch is unknown.
 
-### Push
+#### Push
 
 `git push origin local:remote` will push the `local` branch as the `remote` branch onto the `origin` remote (where `remote` is equal to `local` by default).
 
@@ -1161,7 +1161,7 @@ We may push our `master` branch to our `origin` remote
 
 and everyone with an access to the remote can now see our work.
 
-### Fetch
+#### Fetch
 
 Until now, we have been working on our own on the repository. As we created a public repository, some changes may have been pushed to our remote. git does not automatically try to get modification from the remote so it is the user responsibility to make sure his repository is up to date. The command to retrieve remote changes is `git fetch`:
 
@@ -1196,7 +1196,7 @@ It is important to understand that fetching a remote will _not_ modify the worki
     Switched to a new branch 'english'
 
 
-### Pull
+#### Pull
 
 Often times, we fetch a remote to check for update on our working branch meaning that we want to update both git objects and our working tree. This means that we would actually like to fetch changes and apply them. This is what `git pull` does:
 
@@ -1205,7 +1205,7 @@ Often times, we fetch a remote to check for update on our working branch meaning
     * by merging our local branch with the remote version
     * or by rebasing local branch on the remote branch when invoking `git pull --rebase`.
 
-### Force push
+#### Force push
 
 Let's say we would like to fix the commit message from the branch we fetched
 
@@ -1242,7 +1242,7 @@ By amending, we have just replaced the branch tip commit and whenever a user tri
 
 We here see that pushing a rewritten history (`git commit --amend` or `git rebase`) should be done with care and we will discuss workflows in the next section.
 
-## Branches and remotes: tl;dr
+### Branches and remotes: tl;dr
 
 * branches are simply references to commits
 * `HEAD` references the tip commit for current branch
@@ -1258,11 +1258,11 @@ We here see that pushing a rewritten history (`git commit --amend` or `git rebas
     * having checked if changes were pushed to the remote
     * fully specifying the remote/branch (to avoid force pushing wrong branches)
 
-# Good practices
+## Good practices
 
-## Workflow
+### Workflow
 
-### Branching flow
+#### Branching flow
 
 Creating branches with git is very cheap and should therefore be used without fear. The question is then: how should the branches relate to one another?
 
@@ -1283,7 +1283,7 @@ Most worflows maintain different contexts with careful synchronization points an
 
 The question now becomes: how should branches be synchronized?
 
-### Merge or rebase?
+#### Merge or rebase?
 
 The ["merge or rebase"][122] [question][123] [is][124] [one][125] [of][126] [the][127] [most][128] [debated][129] [one][130].
 
@@ -1303,29 +1303,29 @@ To summarize what seems to become the dominant branch workflow in git:
 
 &gt; [Rebases][133] are how changes should pass from the top of hierarchy downwards and merges are how they flow back upwards.
 
-## What's a good commit?
+### What's a good commit?
 
-### Atomicity
+#### Atomicity
 
 A good commit is about atomicity. Not unlike Unix philosophy, a commit should do [one thing][134] and one thing well. The reason is that it will allow to undo a precise change very easily, and it will provide a kind of documentation about how the system works in its whole. A commit message where the conjunction 'and' appears is probably not very atomic. Nonetheless, doing only one thing does _not_ necessarily mean that a good commit should impact only a single file. Typically making a change in the code base will require a test suite update.
 
-### Hiding sausage making
+#### Hiding sausage making
 
 However, unlike the maxim, the [destination][135] is more important than the journey when it comes to making good commits. It means that even though you took dead ends (like thinking the cause of a bug is X when X is only a consequence of Y) when trying to solve a hard bug, it is very valuable to keep those peregrination in the project history. It first makes it harder to [review][136] the changes in the first place and once in the main trunk it will be harder to understand what the actual fix is. git is flexible and allows different [workflows][137]:
 
 * keeping all changes unstaged and crafting the commits once everything is implemented (using `git add --patch`)
 * creating commits along the way and finally rewriting the history to clean things up. Note that it is sometimes easier to reset to a state where all changes are unstaged/uncommitted (see [Reset][50]).
 
-### Commented hunks of code
+#### Commented hunks of code
 
 Last but not least, a good commit should not contain code that has been commented:
 
 * it will only get people to be confused about the commented hunks
 * it goes against the main usage of a vcs i.e. history control that allow to retrieve past hunks that are no longer in the trunk.
 
-## What's a good commit message?
+### What's a good commit message?
 
-### Formatting
+#### Formatting
 
 The structure of a commit message is important. It [should][138] look like:
 
@@ -1338,7 +1338,7 @@ The structure of a commit message is important. It [should][138] look like:
 
 Following this format will produce readable `git log` outputs and display nicely with git tools and services.
 
-### Content
+#### Content
 
 The commit message is like a (technical) book cover: it should give a good insight of what the commit is actually about. The description is like the backcover, providing more in-depth detail about the commit itself (and possibly listing dead ends encountered). It should answer the following [questions][139]:
 
@@ -1346,7 +1346,7 @@ The commit message is like a (technical) book cover: it should give a good insig
 * How does it address the issue?
 * What side effects does this change have?
 
-### Documentation
+#### Documentation
 
 As every line of code in repository comes from a unique commit, writing good commit messages will provide a [documentation][140] covering all the code:
 
@@ -1356,9 +1356,9 @@ As every line of code in repository comes from a unique commit, writing good com
 
 The advantage of this is that messages cannot go out-of-sync. Whenever a line will be updated, the associated commit message will provide an up-to-date version. And those 3 commands provide fine documentation granularity from a project level (`git whatchanged`), to a file level (`git blame`) and finally a line level (`git log --topo-order`).
 
-# Going further
+## Going further
 
-## Options
+### Options
 
 Here is a short list of useful options that applies to many git commands
 
@@ -1369,7 +1369,7 @@ Here is a short list of useful options that applies to many git commands
 * some commands accept date/time filters such as `\--since`, `\--until`, `\--before` or `\--after`; the ["approxidate"][141] [parser][142] will accept absolute date (e.g. `"2014-01-01"` or `"Jan 01 10:00:00 2014 +01"`) or relative ones (e.g. `"3.weeks.ago"` or `"last monday"`).
 * commands that do not directly accept date/time filters can still be used with dates through the `branch@{approxidate}` construct e.g. `git diff --stat master@{1.week.ago} master` will display a diffstat of changes committed on the `master` during the last week.
 
-## Searching
+### Searching
 
 We have already seen commands to compare [branches][17] and list [commit messages][46]. git allows to quickly [search][143] [through][144] the repository too.
 
@@ -1385,7 +1385,7 @@ We have already seen commands to compare [branches][17] and list [commit message
     * `git log --author='pattern'`: search for commit made by an author matching `'pattern'`
     * `git log --committer='pattern'`: search for commits committed by a committer matching `'pattern'`
 
-## Reset
+### Reset
 
 As we've seen at the beginning, git involves both a local file tree and a commit tree. When one needs to reset something in git, it should first analyze what exactly should be reset:
 
@@ -1393,17 +1393,17 @@ As we've seen at the beginning, git involves both a local file tree and a commit
 * git commit tree only: `git reset sha1`
 * both local file tree and git commit tree: `git reset --hard sha1`
 
-## Cherry pick
+### Cherry pick
 
 It is sometimes handy to be able to apply a single commit from another branch e.g. to report a patch. [`git cherry-pick`][147] will do just that and apply the `sha1` commit content in a new commit on the current branch. The commit object will be distinct. However this is not considered as rewriting history since the commit did previsouly not exist in the branch.
 
-## Stash
+### Stash
 
 It sometimes happen that you need to quickly change context (e.g. to fix some bug in production). To avoid creating a dummy commit with all current staged and unstaged diff, you may use [`git stash`][148]. This will push a new stash in the stash stack.
 
 When stashing, you should always save a message (`git stash -m "..."`) to keep some context to what you were previously doing. The risk is that you might completely forget that you stashed some modification.
 
-## Bisect
+### Bisect
 
 When some bug or regression is found in a repository, we used to perform dichotomy thourgh history to find when _it_ was introduced. [`git bisect`][149] [automates][150] the process.
 
@@ -1412,9 +1412,9 @@ We first need to start the session by setting the interval that should be tested
 
     $ git bisect start
 
-    $ git bisect bad 456xyz # by default HEAD is assumed
+    $ git bisect bad 456xyz ## by default HEAD is assumed
 
-    $ git bisect good abc123 # last commit known to be bug-free
+    $ git bisect good abc123 ## last commit known to be bug-free
 
 
 git then iterates over the range of commits using binary search and will wait for a good/bad flag for each checkouted commit. When all revisions have been bisected, the faulty commit is stored in `refs/bisect/bad`.
@@ -1425,15 +1425,15 @@ To automate things further, an executable script or a command checking wether a 
     $ git bisect run command
 
 
-# Environment
+## Environment
 
-## Command line completion
+### Command line completion
 
 One of the most helpful tool you will need is [git bash completion][151]. This enables tab-completion on most git commands. Downloading the script and [sourcing][152] it in its [bash][153] profile is all that is needed.
 
-## Configuration
+### Configuration
 
-### Local/global/system
+#### Local/global/system
 
 git configuration may be done at three levels (listed by order of _descending_ precedence)
 
@@ -1451,7 +1451,7 @@ Most of the time configuration is set at the `\--global` level but it really dep
 
 All configurations can either be done through the `git config` command or by directly editing the `gitconfig` file if you know what you are doing.
 
-### Basics
+#### Basics
 
 We have already seen some configuration as git requires a user to be properly used:
 
@@ -1479,7 +1479,7 @@ Finally, git may automatically correct mistyped commands when the error can be u
     $ git config --global --set help.autocorrect=5
 
 
-### Aliases
+#### Aliases
 
 [Aliases][155] offer a way to
 
@@ -1513,7 +1513,7 @@ Finally, git may automatically correct mistyped commands when the error can be u
 
 and/or defined as an alias!
 
-## Hooks
+### Hooks
 
 [git hooks][160] offer the possibility to add custom behaviors on top of some git actions:
 
@@ -1543,7 +1543,7 @@ Hooks have to be _executable_ and should be placed in the `.git/hooks` folder. H
 * automatically run test suite locally; depending on the project policy, this could be done for every commit or simply before pushing code to a remote
 * automatically triggering project build/deployment when the remote is updated.
 
-## Custom command-line prompt
+### Custom command-line prompt
 
 When interacting from the command-line, having a prompt displaying information such as the branch or brief status helps to improve productivity by avoiding unnecessary intermediate commands. Implementing a robust bash customization is cumbersome and there already exist lots of customizable [projects][179]:
 
@@ -1553,7 +1553,7 @@ When interacting from the command-line, having a prompt displaying information s
 * [git prompt][183]
 * [zsh git prompt][184]
 
-## Protocols
+### Protocols
 
 Interaction with a remote rely on a [transfer][185] [protocol][186]. Depending on the server configuration, the following protocols may be available:
 
@@ -1565,7 +1565,7 @@ Other technical considerations such as corporate firewall preventing traffic thr
 
 [Major][189] [commercial][190] git [hosting][80] solutions support at least ssh and https protocols.
 
-## GUIs and plugins
+### GUIs and plugins
 
 Here is a list of higher level [GUIs][191] or plugins:
 
@@ -1577,41 +1577,41 @@ Here is a list of higher level [GUIs][191] or plugins:
 * [magit][199] for emacs ([tutorial][200])
 * [sublime-text git][201] for sublime-text
 
-## Jargon
+### Jargon
 
-### upstream/downstream
+#### upstream/downstream
 
 This definition is [relative][202] and depends on how data flows:
 
 * downstream expresses that content is being fetched
 * upstream stands for the original source of data.
 
-### bare and non-bare repository
+#### bare and non-bare repository
 
 A non-bare repository is what we have been manipulating so far: a repository containing both `.git` folder and a local file tree.
 
 A [bare][203] repository has no local file tree but just the `.git` folder. It is typically used for host host git repositories on a [server][204] and is instanciated using `git init --bare`.
 
-### fork
+#### fork
 
 A [fork][205] is a copy of a repository.
 
-### pull request
+#### pull request
 
 A [pull request][206] is a request to merge a branch (typically hosted on a fork) into an other branch.
 
-### porcelain/plumbing
+#### porcelain/plumbing
 
 This terminology refers to [toilets][207]:
 
 * porcelain is the material from which toilets are made; this stands for git high level commands, the one the user actually see and interact with
 * plumbing is what happens behind the scene and what carries "stuff"; plumbing are the low level commands to which porcelain commands transfer data.
 
-### gist
+#### gist
 
 A [gist][208] is a lightweight repository typically versioning a single or a small number of files.
 
-### hunk
+#### hunk
 
 A [hunk][209] is a section of diff e.g.
 
@@ -1626,7 +1626,7 @@ A [hunk][209] is a section of diff e.g.
 * the three pairs of numbers indicates common ancestor, "from file" and "to file" lines span
 * a line span pair represent `first line, number of lines` for the diff patch.
 
-# References
+## References
 
 * http://rogerdudler.github.io/git-guide/
 * https://try.github.io/levels/1/challenges/1
