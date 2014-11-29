@@ -14,7 +14,7 @@
 [Algorithm]()
 
   * [HMM](pages/algorithm/hmm.md)
-  * [Naive Bayes](pages/algorithm/bayes.md)
+  * [Bayes](pages/algorithm/bayes.md)
   * [Apriori](pages/algorithm/apriori.md)
 
 [Programming]()
