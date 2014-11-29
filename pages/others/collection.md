@@ -33,6 +33,7 @@
 * [Strut](http://strut.io): Online slides creator using impress.js
 * [DevDocs](http://devdocs.io): DevDocs combines multiple API documentatiosn in a fast, organized, and searchable interface.
 * [Charted](http://charted.co): Beautiful, automatic charts
+* [VimAwesome](http://vimawesome.com): Awesome vim plugins from across the universe
 
 ## Buy! Buy! Buy!
 * [Pentax K-01](http://www.dgtle.com/article-1592-1.html)
