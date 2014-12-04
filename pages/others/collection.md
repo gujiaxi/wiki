@@ -41,3 +41,7 @@
 
 ## Funny stuff
 * [Math Bytes](http://lifeislinear.davidson.edu/M&Mart.html): A bit of Math Bytes code. M&M Art
+
+## Fonts
+* [INPUT](http://input.fontbureau.com/): Fonts for Code, from Font Bureau
+* [Anonymous Pro](http://www.marksimonson.com/fonts/view/anonymous-pro): a fixed width sans designed especially for coders
