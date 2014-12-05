@@ -78,7 +78,7 @@ Type conversion functions have the naming convention `as.xxx` for the function c
 
 You can input `T` or `TRUE` for true values and `F` or `FALSE` for false values.
 
-The operators `&amp;` and `|` apply element-wise on vectors. The operators `&amp;&amp;` and `||` are often used in conditional statements and use lazy evaluation as in C: the operators will not evaluate their second argument if the return value is determined by the first argument.
+The operators `&` and `|` apply element-wise on vectors. The operators `&&` and `||` are often used in conditional statements and use lazy evaluation as in C: the operators will not evaluate their second argument if the return value is determined by the first argument.
 
 ## Lists
 
@@ -202,7 +202,7 @@ Radford Neal's series on design flaws in R. Part [I][20], [II][21], [III][22].
 [16]: http://www.johndcook.com/blog/r_language_for_programmers/../contact
 [17]: http://www.johndcook.com/blog/2008/10/23/five-kinds-of-r-language-subscripts/
 [18]: http://www.r-project.org/
-[19]: http://www.amazon.com/gp/product/0470510242/104-5257411-2220725?ie=UTF8&amp;tag=theende-20&amp;linkCode=xm2&amp;camp=1789&amp;creativeASIN=0470510242
+[19]: http://www.amazon.com/gp/product/0470510242/104-5257411-2220725?ie=UTF8&tag=theende-20&linkCode=xm2&camp=1789&creativeASIN=0470510242
 [20]: http://radfordneal.wordpress.com/2008/08/06/design-flaws-in-r-1-reversing-sequences/
 [21]: http://radfordneal.wordpress.com/2008/08/20/design-flaws-in-r-2-%E2%80%94-dropped-dimensions/
 [22]: http://radfordneal.wordpress.com/2008/09/21/design-flaws-in-r-3-%E2%80%94-zero-subscripts/
