@@ -12,7 +12,7 @@ This document is a work in progress. [Corrections and comments][16] are welcome.
 
 The assignment operator in R is `<-` as in
 
-`e <\- m*c^2`.
+`e <- m*c^2`.
 
 It is also possible, though uncommon, to reverse the arrow and put the receiving variable on the right, as in
 
@@ -32,7 +32,7 @@ R uses `$` in a manner analogous to the way other languages use dot.
 
 R has several one-letter reserved words: `c`, `q`, `s`, `t`, `C`, `D`, `F`, `I`, and `T`.
 
-(Actually, these are not reserved, but it's best to think of them as reserved. For example, `c` is a built-in function for creating vectors, though you could also create a variable named `c`. Worse, `T` and `F` are not synonyms for `TRUE` and `FALSE` but variables that have the expected values by default. So someone could include the code `T <\- FALSE; F <\- TRUE` and reverse their meanings!)
+(Actually, these are not reserved, but it's best to think of them as reserved. For example, `c` is a built-in function for creating vectors, though you could also create a variable named `c`. Worse, `T` and `F` are not synonyms for `TRUE` and `FALSE` but variables that have the expected values by default. So someone could include the code `T <- FALSE; F <- TRUE` and reverse their meanings!)
 
 ## Vectors
 
@@ -48,7 +48,7 @@ Adding a vector of length 22 and a vector of length 45 in most languages would r
 
 The R language has no provision for scalars, nothing like a `double` in C-family languages. The only way to represent a single number in a variable is to use a vector of length one. And while it is possible to iterate through vectors as one might do in a `for` loop in C, it is usually clearer and more efficient in R to operate on vectors as a whole.
 
-Vectors are created using the `c` function. For example, ` p <\- c(2,3,5,7)` sets `p` to the vector containing the first four prime numbers.
+Vectors are created using the `c` function. For example, ` p <- c(2,3,5,7)` sets `p` to the vector containing the first four prime numbers.
 
 Vectors in R are indexed starting with 1 and matrices in are stored in column-major order. In both of these ways R resembles FORTRAN.
 
@@ -100,7 +100,7 @@ If you attempt to access a non-existent element of a list, say `a[[4]]` above, y
 
 In a sense, R does not support matrices, only vectors. But you can change the dimension of a vector, essentially making it a matrix.
 
-For example, `m <\- array( c(1,2,3,4,5,6), dim=c(2,3) )` creates a matrix `m`. However, it may come as a surprise that the first row of `m` has elements 1, 3, and 5. This is because by default, R fills matrices by column, like FORTRAN. To fill `m` by row, add the argument `by.row = TRUE` to the call to the `array` function.
+For example, `m <- array( c(1,2,3,4,5,6), dim=c(2,3) )` creates a matrix `m`. However, it may come as a surprise that the first row of `m` has elements 1, 3, and 5. This is because by default, R fills matrices by column, like FORTRAN. To fill `m` by row, add the argument `by.row = TRUE` to the call to the `array` function.
 
 ## Missing values and NaNs
 
