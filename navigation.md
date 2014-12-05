@@ -19,7 +19,7 @@
 
 [Programming]()
 
-  * [R](pages/Programming/r.md)
+  * [R](pages/programming/r.md)
   * [Git](pages/programming/gitintro.md)
   * [MySQL](pages/programming/mysql.md)
   * [Haskell](pages/programming/haskell.md)
