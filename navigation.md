@@ -19,10 +19,10 @@
 
 [Programming]()
 
-  * [Haskell](pages/programming/haskell.md)
+  * [R](pages/Programming/r.md)
   * [Git](pages/programming/gitintro.md)
   * [MySQL](pages/programming/mysql.md)
-  * [R](pages/Programming/r.md)
+  * [Haskell](pages/programming/haskell.md)
 
 [Research]()
 
