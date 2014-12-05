@@ -10,13 +10,13 @@ This document is a work in progress. [Corrections and comments][16] are welcome.
 
 ## Assignment and underscore
 
-The assignment operator in R is `&lt;-` as in
+The assignment operator in R is `<-` as in
 
-`e &lt;\- m*c^2`.
+`e <\- m*c^2`.
 
 It is also possible, though uncommon, to reverse the arrow and put the receiving variable on the right, as in
 
-`m*c^2 -&gt; e`.
+`m*c^2 -> e`.
 
 It is sometimes possible to use `=` for assignment, though I don't understand when this is and is not allowed. Most people avoid the issue by always using the arrow.
 
@@ -32,13 +32,13 @@ R uses `$` in a manner analogous to the way other languages use dot.
 
 R has several one-letter reserved words: `c`, `q`, `s`, `t`, `C`, `D`, `F`, `I`, and `T`.
 
-(Actually, these are not reserved, but it's best to think of them as reserved. For example, `c` is a built-in function for creating vectors, though you could also create a variable named `c`. Worse, `T` and `F` are not synonyms for `TRUE` and `FALSE` but variables that have the expected values by default. So someone could include the code `T &lt;\- FALSE; F &lt;\- TRUE` and reverse their meanings!)
+(Actually, these are not reserved, but it's best to think of them as reserved. For example, `c` is a built-in function for creating vectors, though you could also create a variable named `c`. Worse, `T` and `F` are not synonyms for `TRUE` and `FALSE` but variables that have the expected values by default. So someone could include the code `T <\- FALSE; F <\- TRUE` and reverse their meanings!)
 
 ## Vectors
 
 The primary data type in R is the vector. Before describing how vectors work in R, it is helpful to distinguish two ideas of vectors in order to set the correct expectations
 
-The first idea of a vector is what I will call a container vector. This is an ordered collection of numbers with no other structure, such as the `vector&lt;&gt;` container in C++. The length of a vector is the number of elements in the container. Operations are applied componentwise. For example, given two vectors `x` and `y` of equal length, `x*y` would be the vector whose nth component is the product of the nth components of `x` and `y`. Also, `log(x)` would be the vector whose nth component is the logarithm of the nth component of `x`.
+The first idea of a vector is what I will call a container vector. This is an ordered collection of numbers with no other structure, such as the `vector<>` container in C++. The length of a vector is the number of elements in the container. Operations are applied componentwise. For example, given two vectors `x` and `y` of equal length, `x*y` would be the vector whose nth component is the product of the nth components of `x` and `y`. Also, `log(x)` would be the vector whose nth component is the logarithm of the nth component of `x`.
 
 The other idea of a vector is a mathematical vector, an element of a vector space. In this context "length" means geometrical length determined by an inner product; the number of components is called "dimension." In general, operations are not applied componentwise. The expression `x*y` is a single number, the inner product of the vectors. The expression `log(x)` is meaningless.
 
@@ -48,7 +48,7 @@ Adding a vector of length 22 and a vector of length 45 in most languages would r
 
 The R language has no provision for scalars, nothing like a `double` in C-family languages. The only way to represent a single number in a variable is to use a vector of length one. And while it is possible to iterate through vectors as one might do in a `for` loop in C, it is usually clearer and more efficient in R to operate on vectors as a whole.
 
-Vectors are created using the `c` function. For example, ` p &lt;\- c(2,3,5,7)` sets `p` to the vector containing the first four prime numbers.
+Vectors are created using the `c` function. For example, ` p <\- c(2,3,5,7)` sets `p` to the vector containing the first four prime numbers.
 
 Vectors in R are indexed starting with 1 and matrices in are stored in column-major order. In both of these ways R resembles FORTRAN.
 
@@ -89,7 +89,7 @@ Lists are created using the `list` function. Elements can be access by position 
 Named elements of lists act like C `struct`s, except a dollar sign rather than a dot is used to access elements. For example, consider,
 
 
-    a &lt;- list(name="Joe", 4, foo=c(3,8,9))
+    a <- list(name="Joe", 4, foo=c(3,8,9))
 
 
 Now `a[[1]]` and `a$name` both equal the string "Joe".
@@ -100,7 +100,7 @@ If you attempt to access a non-existent element of a list, say `a[[4]]` above, y
 
 In a sense, R does not support matrices, only vectors. But you can change the dimension of a vector, essentially making it a matrix.
 
-For example, `m &lt;\- array( c(1,2,3,4,5,6), dim=c(2,3) )` creates a matrix `m`. However, it may come as a surprise that the first row of `m` has elements 1, 3, and 5. This is because by default, R fills matrices by column, like FORTRAN. To fill `m` by row, add the argument `by.row = TRUE` to the call to the `array` function.
+For example, `m <\- array( c(1,2,3,4,5,6), dim=c(2,3) )` creates a matrix `m`. However, it may come as a surprise that the first row of `m` has elements 1, 3, and 5. This is because by default, R fills matrices by column, like FORTRAN. To fill `m` by row, add the argument `by.row = TRUE` to the call to the `array` function.
 
 ## Missing values and NaNs
 
@@ -119,7 +119,7 @@ Comments begin with # and continue to the end of the line, as in Python or Perl.
 The function definition syntax of R is similar to that of JavaScript. For example:
 
 
-    f &lt;- function(a, b)
+    f <- function(a, b)
     {
         return (a+b)
     }
@@ -132,7 +132,7 @@ Note that `return` is a function; its argument must be contained in parentheses,
 Default values are defined similarly to C++. In the following example, `b` is set to 10 by default.
 
 
-    f &lt;- function(a, b=10)
+    f <- function(a, b=10)
     {
         return (a+b)
     }
@@ -143,7 +143,7 @@ So `f(5, 1)` would return 6, and `f(5)` would return 15. R allows more sophistic
 C++ requires that if an argument has a default value then so do all values to the right. This is not the case in R, though it is still a good idea. The function definition
 
 
-    f &lt;- function(a=10, b)
+    f <- function(a=10, b)
     {
         return (a+b)
     }
