@@ -22,6 +22,7 @@
   * [Haskell](pages/programming/haskell.md)
   * [Git](pages/programming/gitintro.md)
   * [MySQL](pages/programming/mysql.md)
+  * [R](pages/Programming/r.md)
 
 [Research]()
 
