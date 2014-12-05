@@ -1,5 +1,4 @@
-R language for programmers
-=====
+# R language for programmers
 
 ## Introduction
 
