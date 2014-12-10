@@ -1,7 +1,7 @@
 # Isaac's Wiki
 
 ## Who
-My name is Jiaxi(or you can call me Isaac). I'm a college student in Xi'an, China. I love design, code, & making things work. When not changing the world, I enjoy rock music, video games, basketball, & writing.
+My name is Jiaxi (or you can call me Isaac). I'm a college student in Xi'an, China. I love design, code, & making things work. When not changing the world, I enjoy rock music, video games, basketball, & writing.
 
 [gimmick:googlemaps](Xi'an, China)
 
