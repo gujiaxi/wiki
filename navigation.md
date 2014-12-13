@@ -29,11 +29,13 @@
   * [Mlticast Transport Protocol](pages/research/videotrans.md)
   * [Traffic Lane Improvement](pages/research/trafficlane.md)
 
+[Languages]()
+
+  * [English](pages/languages/english.md)
+  * [Japanese](pages/languages/japanese.md)
+
 [Others]()
 
-  * # Art
-  * [Andy Warhol](pages/others/andy-warhol.md)
-  - - - -
   * # Life
   * [Coffee](pages/others/coffee.md)
   - - - -
