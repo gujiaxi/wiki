@@ -19,12 +19,11 @@
 
 [Programming]()
 
-  * [R](pages/programming/r.md)
-  * [Git](pages/programming/gitintro.md)
   * [Common Lisp](pages/programming/clisp.md)
-  * [MySQL](pages/programming/mysql.md)
   * [Haskell](pages/programming/haskell.md)
-  * [Sed](pages/programming/sed.md)
+  * [Git](pages/programming/gitintro.md)
+  * [MySQL](pages/programming/mysql.md)
+  * [R](pages/programming/r.md)
 
 [Research]()
 
