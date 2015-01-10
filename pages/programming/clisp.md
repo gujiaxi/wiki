@@ -49,6 +49,9 @@
 (zerop (- 2 2))
 (listp '(a b c))
 (numberp 12)
+(integerp 13)
+(floatp 12.3)
+(stringp "hello")
 (typep 12 'integer)
 (oddp 13)
 (evenp 12)
@@ -81,6 +84,44 @@
 (apply #'+ '(1 2 3))
 
 ;; Array
+(setf arr (make-array '(2 3) :initial-element nil)) ; Array dimensions can be 7 at most
+(aref arr 0 1) ; array reference?
+(setf (aref arr 0 1) 'b) ; set the element value
+#2a((nil b nil) (nil nil nil)) ; literal array (2 is the number of dimensions)
+;; one-dimension array is a vector
+(make-array 3 :initial-element 1) ; equals the above
+(vector 1 1 1)
+(svref (vector 'a 'b 3) 1) ; simple vector reference
+#(a b 3) ; literal vector
+;; string is a vecotr that consists of characters
+#\b ; literal character
+(sort "acb" #'char<)
+(aref "acb" 1)
+(svref "acb" 1)
+(char "acb" 1)
+(elt "acb" 1)
+(elt '(a b c) 1) ; elt means element. It is general-purpose for both list and arrays
+
+(position #\a "fantasy")
+(position #\a "fantasy" :start 3 :end 5)
+(position #\a "fantasy" :from-end t)
+(position 'a '((c d) (a b)) :key #'car)
+(position 3 '(1 0 7 5) :test #'<)
+(position-if #'oddp '(2 3 4 5))
+(remove-if #'oddp '(1 2 3 4))
+(remove-duplicates "abracadabra")
+
+(reduce #'+ '(1 2 3)) ; famous reduce operation, equals to the below one
+( + (+ 1 2) 3)
+
+
+(equal "fred" "Fred")
+(string-equal "fred" "Fred")
+(format nil "~A or ~A" "truth" "dare") ; create a string via format
+(concatenate 'string "not" "to worry")
+(concatenate 'list '(a b c) '(1 2 3))
+(concatenate 'vector #(a b c) #(1 2 3))
+
 ```
 
 ## References
