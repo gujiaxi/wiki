@@ -1,5 +1,0 @@
-# Hello
-
-```clojure
-;; Hello
-```

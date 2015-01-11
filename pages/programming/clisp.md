@@ -1,6 +1,6 @@
 # Learn Common Lisp
 
-```clojure
+```
 ;; An example for understanding the concept of clojure
 ;; The following function returns a function
 (defun addn (n)
@@ -8,7 +8,7 @@
     (+ x n)))
 ```
 
-```clojure
+```
 ;; Lisp Operations
 (cons 'a '(b c d)) ; Short for "Construct"
 (car '(a b c)) ; Short for "Contents of the Address part of Register number"
