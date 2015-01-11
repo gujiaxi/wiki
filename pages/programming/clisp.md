@@ -1,13 +1,13 @@
 # Learn Common Lisp
-```lisp
-;; An example for understanding the concept of closure
+```clojure
+;; An example for understanding the concept of clojure
 ;; The following function returns a function
 (defun addn (n)
   #'(lambda (x)
     (+ x n)))
 ```
 
-```lisp
+```clojure
 ;; Lisp Operations
 (cons 'a '(b c d)) ; Short for "Construct"
 (car '(a b c)) ; Short for "Contents of the Address part of Register number"
