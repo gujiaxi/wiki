@@ -1,4 +1,5 @@
 # Learn Common Lisp
+
 ```clojure
 ;; An example for understanding the concept of clojure
 ;; The following function returns a function
