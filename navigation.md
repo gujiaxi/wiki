@@ -19,7 +19,7 @@
 
 [Programming]()
 
-  * [Common Lisp](pages/programming/clisp.md)
+  * [Lisp](pages/programming/clisp.md)
   * [Haskell](pages/programming/haskell.md)
   * [Git](pages/programming/gitintro.md)
   * [MySQL](pages/programming/mysql.md)
