@@ -3,7 +3,7 @@
 ## Clojure
 Below is an example for understanding the concept of clojure in Lisp. It returns a function.
 
-```
+```scheme
 (defun addn (n)
   #'(lambda (x)
     (+ x n)))
