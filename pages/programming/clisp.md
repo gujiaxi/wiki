@@ -11,7 +11,7 @@ Below is an example for understanding the concept of clojure in Lisp. It returns
 
 ## Operations
 
-```lisp
+```scheme
 (cons 'a '(b c d)) ; Short for "Construct"
 (car '(a b c)) ; Short for "Contents of the Address part of Register number"
 (cdr '(a b c)) ; Short for "Contents of the Decrement part of Register number"
