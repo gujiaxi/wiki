@@ -24,6 +24,7 @@
   * [Git](pages/programming/gitintro.md)
   * [MySQL](pages/programming/mysql.md)
   * [R](pages/programming/r.md)
+  * [Tmux](pages/programming/tmux.md)
 
 [Research]()
 
